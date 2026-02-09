@@ -1268,7 +1268,7 @@ a {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--space-sm);
-        padding: 0 var(--space-md);
+        padding: 0 var(--space-sm);
         height: auto;
     }
 
