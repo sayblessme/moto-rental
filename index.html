@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOTO ELITE - Премиальная аренда мотоциклов</title>
     <meta name="description" content="Эксклюзивная аренда премиальных мотоциклов. Испытайте свободу на легендарных машинах.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +36,20 @@
                     </div>
                 </div>
 
-                <a href="/" class="header__logo">
-                    <span class="logo-text">MOTO ELITE</span>
+                <a href="#" class="header__logo">
+                    <svg class="logo-icon" viewBox="0 0 48 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="20" r="6" stroke="currentColor" stroke-width="1.2"/>
+                        <circle cx="10" cy="20" r="2" stroke="currentColor" stroke-width="0.6"/>
+                        <circle cx="38" cy="20" r="6" stroke="currentColor" stroke-width="1.2"/>
+                        <circle cx="38" cy="20" r="2" stroke="currentColor" stroke-width="0.6"/>
+                        <path d="M16 20L19 11L24 8L28 8L32 12L33 17L34 20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19 11L21 8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                        <path d="M24 8L22 4L25 3" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M28 8L30 5L28 4" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20 14L26 11L32 12" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 17L30 15" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+                        <path d="M32 12L36 14L38 15" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </a>
 
                 <a href="#contact" class="header__cta">
@@ -48,7 +61,9 @@
 
     <!-- Navigation Menu -->
     <nav class="menu" id="menu">
-        <div class="menu__bg"></div>
+        <div class="menu__bg">
+            <img src="images/menu-bg.webp" alt="">
+        </div>
         <div class="wrapper">
             <div class="menu__inner">
                 <div class="menu__nav">
@@ -84,7 +99,7 @@
         <div class="hero__media">
             <div class="hero__media__overlay"></div>
             <div class="hero__media__image" data-parallax>
-                <img src="images/hero-ducati.png" alt="Ducati Panigale V4">
+                <img src="images/hero-ducati.webp" alt="Ducati Panigale V4">
             </div>
         </div>
         <div class="wrapper">
@@ -98,16 +113,16 @@
                     </svg>
                 </div>
                 <h1 class="hero__title" data-split-text>
-                    Искусство свободы<br>на двух колёсах
+                    Почувствуй дорогу.<br>Забудь обо всём остальном.
                 </h1>
                 <p class="hero__subtitle" data-split-text>
-                    Эксклюзивная коллекция премиальных мотоциклов<br>
-                    для истинных ценителей
+                    Легендарные мотоциклы, полная экипировка<br>
+                    и свобода — от одного дня.
                 </p>
                 <div class="hero__cta" data-fade-in>
                     <a href="#fleet" class="button">
                         <span class="button__line"></span>
-                        <span class="button__text">Открыть коллекцию</span>
+                        <span class="button__text">Выбрать мотоцикл</span>
                         <span class="button__line right"></span>
                     </a>
                 </div>
@@ -132,10 +147,11 @@
                     </svg>
                 </div>
                 <blockquote class="quote__text" data-split-text>
-                    Мотоцикл — это не просто транспорт.<br>
-                    Это философия жизни, где каждая поездка<br>
-                    становится путешествием к себе.
+                    После первого поворота за МКАД я понял —<br>
+                    это не аренда. Это лучший день<br>
+                    за последний год.
                 </blockquote>
+                <cite class="quote__author" data-fade-in>— Алексей, Ducati Panigale V4</cite>
                 <div class="quote__ornament bottom">
                     <svg viewBox="0 0 40 60" fill="none">
                         <path d="M20 0 L20 60" stroke="currentColor" stroke-width="0.5"/>
@@ -150,8 +166,8 @@
     <section class="section-fleet" id="fleet">
         <div class="wrapper">
             <div class="section-header" data-fade-in>
-                <span class="section-label">Коллекция</span>
-                <h2 class="section-title" data-split-text>Наш парк</h2>
+                <span class="section-label">Автопарк</span>
+                <h2 class="section-title" data-split-text>Выберите свой характер</h2>
             </div>
         </div>
 
@@ -160,7 +176,7 @@
                 <!-- Motorcycle 1 -->
                 <div class="fleet-card">
                     <div class="fleet-card__media">
-                        <img src="images/ducati-v4.jpg" alt="Ducati Panigale V4">
+                        <img src="images/ducati-v4.webp" alt="Ducati Panigale V4">
                     </div>
                     <div class="fleet-card__content">
                         <span class="fleet-card__category">Sport</span>
@@ -176,7 +192,7 @@
                 <!-- Motorcycle 2 -->
                 <div class="fleet-card">
                     <div class="fleet-card__media">
-                        <img src="images/bmw-gs.jpg" alt="BMW R 1250 GS">
+                        <img src="images/bmw-gs.webp" alt="BMW R 1250 GS">
                     </div>
                     <div class="fleet-card__content">
                         <span class="fleet-card__category">Adventure</span>
@@ -192,7 +208,7 @@
                 <!-- Motorcycle 3 -->
                 <div class="fleet-card">
                     <div class="fleet-card__media">
-                        <img src="images/harley-fatboy.jpg" alt="Harley-Davidson Fat Boy">
+                        <img src="images/harley-fatboy.webp" alt="Harley-Davidson Fat Boy">
                     </div>
                     <div class="fleet-card__content">
                         <span class="fleet-card__category">Cruiser</span>
@@ -208,7 +224,7 @@
                 <!-- Motorcycle 4 -->
                 <div class="fleet-card">
                     <div class="fleet-card__media">
-                        <img src="images/kawasaki-h2.jpg" alt="Kawasaki Ninja H2">
+                        <img src="images/kawasaki-h2.webp" alt="Kawasaki Ninja H2">
                     </div>
                     <div class="fleet-card__content">
                         <span class="fleet-card__category">Hypersport</span>
@@ -216,6 +232,69 @@
                         <p class="fleet-card__specs">231 л.с. / 998 см³</p>
                         <div class="fleet-card__price">
                             <span class="price">от 30 000 ₽</span>
+                            <span class="period">/ сутки</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Motorcycle 5 -->
+                <div class="fleet-card">
+                    <div class="fleet-card__media">
+                        <img src="images/ducati-diavel.webp" alt="Ducati Diavel V4">
+                    </div>
+                    <div class="fleet-card__content">
+                        <span class="fleet-card__category">Power Cruiser</span>
+                        <h3 class="fleet-card__title">Ducati Diavel V4</h3>
+                        <p class="fleet-card__specs">168 л.с. / 1158 см³</p>
+                        <div class="fleet-card__price">
+                            <span class="price">от 22 000 ₽</span>
+                            <span class="period">/ сутки</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motorcycle 6 -->
+                <div class="fleet-card">
+                    <div class="fleet-card__media">
+                        <img src="images/bmw-s1000rr.webp" alt="BMW S 1000 RR">
+                    </div>
+                    <div class="fleet-card__content">
+                        <span class="fleet-card__category">Supersport</span>
+                        <h3 class="fleet-card__title">BMW S 1000 RR</h3>
+                        <p class="fleet-card__specs">210 л.с. / 999 см³</p>
+                        <div class="fleet-card__price">
+                            <span class="price">от 28 000 ₽</span>
+                            <span class="period">/ сутки</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motorcycle 7 -->
+                <div class="fleet-card">
+                    <div class="fleet-card__media">
+                        <img src="images/triumph-speed.webp" alt="Triumph Speed Triple 1200">
+                    </div>
+                    <div class="fleet-card__content">
+                        <span class="fleet-card__category">Naked</span>
+                        <h3 class="fleet-card__title">Triumph Speed Triple 1200</h3>
+                        <p class="fleet-card__specs">180 л.с. / 1160 см³</p>
+                        <div class="fleet-card__price">
+                            <span class="price">от 20 000 ₽</span>
+                            <span class="period">/ сутки</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motorcycle 8 -->
+                <div class="fleet-card">
+                    <div class="fleet-card__media">
+                        <img src="images/indian-scout.webp" alt="Indian Scout Bobber">
+                    </div>
+                    <div class="fleet-card__content">
+                        <span class="fleet-card__category">Classic</span>
+                        <h3 class="fleet-card__title">Indian Scout Bobber</h3>
+                        <p class="fleet-card__specs">100 л.с. / 1133 см³</p>
+                        <div class="fleet-card__price">
+                            <span class="price">от 17 000 ₽</span>
                             <span class="period">/ сутки</span>
                         </div>
                     </div>
@@ -240,7 +319,7 @@
     <!-- Full Image Section -->
     <section class="section-media">
         <div class="media-container" data-parallax-container>
-            <img src="images/lifestyle.png" alt="Мотоциклист на горной дороге">
+            <img src="images/lifestyle.webp" alt="Мотоциклист на горной дороге">
         </div>
     </section>
 
@@ -252,37 +331,37 @@
                     <span class="section-label">Опыт</span>
                     <h2 class="section-title" data-split-text>Больше чем<br>аренда</h2>
                     <p class="experience__text" data-split-text>
-                        Мы создаём незабываемые впечатления. Каждый мотоцикл
-                        проходит тщательную подготовку, чтобы вы могли
-                        насладиться каждым километром пути.
+                        Рёв двигателя. Запах кожи. Ветер, которому плевать
+                        на ваш дедлайн. Мы не сдаём мотоциклы — мы даём то,
+                        чего не хватает в городских буднях.
                     </p>
                     <div class="experience__features">
                         <div class="feature">
                             <span class="feature__number">01</span>
                             <div class="feature__content">
-                                <h4>Персональный подход</h4>
-                                <p>Индивидуальный подбор мотоцикла под ваш стиль</p>
+                                <h4>Подбор под вас</h4>
+                                <p>Мотоцикл под ваш рост, стиль и маршрут</p>
                             </div>
                         </div>
                         <div class="feature">
                             <span class="feature__number">02</span>
                             <div class="feature__content">
-                                <h4>Премиум сервис</h4>
-                                <p>Доставка, экипировка и поддержка 24/7</p>
+                                <h4>Всё готово</h4>
+                                <p>Экипировка, страховка и доставка — уже включены</p>
                             </div>
                         </div>
                         <div class="feature">
                             <span class="feature__number">03</span>
                             <div class="feature__content">
-                                <h4>Эксклюзивные маршруты</h4>
-                                <p>Авторские маршруты по самым живописным дорогам</p>
+                                <h4>Дороги, о которых не знают</h4>
+                                <p>Авторские маршруты по Подмосковью и за его пределами</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="experience__media">
                     <div class="experience__image" data-parallax>
-                        <img src="images/glovedhands.png" alt="Руки в перчатках на руле мотоцикла">
+                        <img src="images/glovedhands.webp" alt="Руки в перчатках на руле мотоцикла">
                     </div>
                 </div>
             </div>
@@ -305,8 +384,8 @@
                             <path d="M24 12V24L32 28" stroke="currentColor" stroke-width="1"/>
                         </svg>
                     </div>
-                    <h3 class="service-card__title">Гибкие сроки</h3>
-                    <p class="service-card__text">От нескольких часов до нескольких месяцев</p>
+                    <h3 class="service-card__title">От 3 часов до 3 месяцев</h3>
+                    <p class="service-card__text">Аренда от пробной поездки до целого сезона</p>
                 </div>
 
                 <div class="service-card" data-fade-in>
@@ -316,8 +395,8 @@
                             <path d="M16 24L22 30L32 18" stroke="currentColor" stroke-width="1"/>
                         </svg>
                     </div>
-                    <h3 class="service-card__title">Полная страховка</h3>
-                    <p class="service-card__text">КАСКО и гражданская ответственность</p>
+                    <h3 class="service-card__title">Вы защищены</h3>
+                    <p class="service-card__text">КАСКО и гражданская ответственность включены</p>
                 </div>
 
                 <div class="service-card" data-fade-in>
@@ -327,8 +406,8 @@
                             <path d="M24 16V32M16 24H32" stroke="currentColor" stroke-width="1"/>
                         </svg>
                     </div>
-                    <h3 class="service-card__title">Экипировка</h3>
-                    <p class="service-card__text">Премиальная мотоэкипировка в подарок</p>
+                    <h3 class="service-card__title">Экипировка включена</h3>
+                    <p class="service-card__text">Шлем, куртка, перчатки — подберём по размеру</p>
                 </div>
 
                 <div class="service-card" data-fade-in>
@@ -339,8 +418,8 @@
                             <circle cx="24" cy="24" r="4" stroke="currentColor" stroke-width="1"/>
                         </svg>
                     </div>
-                    <h3 class="service-card__title">Доставка</h3>
-                    <p class="service-card__text">Доставим мотоцикл в любую точку города</p>
+                    <h3 class="service-card__title">Доставка по Москве</h3>
+                    <p class="service-card__text">Привезём мотоцикл к вашему дому или офису</p>
                 </div>
             </div>
         </div>
@@ -350,13 +429,13 @@
     <section class="section-gallery">
         <div class="gallery-grid">
             <div class="gallery-item" data-parallax-item>
-                <img src="images/ducati-v4.jpg" alt="Ducati Panigale V4">
+                <img src="images/gallery1.webp" alt="Мотоцикл в гараже">
             </div>
             <div class="gallery-item large" data-parallax-item>
-                <img src="images/bmw-gs.jpg" alt="BMW R 1250 GS">
+                <img src="images/gallery2.webp" alt="Мотопробег на горной дороге">
             </div>
             <div class="gallery-item" data-parallax-item>
-                <img src="images/kawasaki-h2.jpg" alt="Kawasaki Ninja H2">
+                <img src="images/gallery3.webp" alt="Мотоциклетная экипировка">
             </div>
         </div>
     </section>
@@ -367,10 +446,10 @@
             <div class="contact__grid">
                 <div class="contact__content" data-fade-in>
                     <span class="section-label">Контакты</span>
-                    <h2 class="section-title" data-split-text>Начните<br>путешествие</h2>
+                    <h2 class="section-title" data-split-text>Ваш мотоцикл<br>ждёт</h2>
                     <p class="contact__text">
-                        Оставьте заявку и наш менеджер свяжется с вами<br>
-                        в течение 15 минут
+                        Позвоните — и завтра вы уже в дороге.<br>
+                        Или оставьте заявку — перезвоним за 15 минут.
                     </p>
 
                     <div class="contact__info">
@@ -410,6 +489,10 @@
                                 <option value="bmw">BMW R 1250 GS</option>
                                 <option value="harley">Harley-Davidson Fat Boy</option>
                                 <option value="kawasaki">Kawasaki Ninja H2</option>
+                                <option value="diavel">Ducati Diavel V4</option>
+                                <option value="s1000rr">BMW S 1000 RR</option>
+                                <option value="triumph">Triumph Speed Triple 1200</option>
+                                <option value="indian">Indian Scout Bobber</option>
                             </select>
                             <div class="form-line"></div>
                         </div>
@@ -419,7 +502,7 @@
                         </div>
                         <button type="submit" class="button submit">
                             <span class="button__line"></span>
-                            <span class="button__text">Отправить заявку</span>
+                            <span class="button__text">Забронировать мотоцикл</span>
                             <span class="button__line right"></span>
                         </button>
                     </form>
@@ -433,7 +516,19 @@
         <div class="wrapper">
             <div class="footer__inner">
                 <div class="footer__logo">
-                    <span>MOTO ELITE</span>
+                    <svg class="logo-icon" viewBox="0 0 48 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="20" r="6" stroke="currentColor" stroke-width="1.2"/>
+                        <circle cx="10" cy="20" r="2" stroke="currentColor" stroke-width="0.6"/>
+                        <circle cx="38" cy="20" r="6" stroke="currentColor" stroke-width="1.2"/>
+                        <circle cx="38" cy="20" r="2" stroke="currentColor" stroke-width="0.6"/>
+                        <path d="M16 20L19 11L24 8L28 8L32 12L33 17L34 20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19 11L21 8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                        <path d="M24 8L22 4L25 3" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M28 8L30 5L28 4" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20 14L26 11L32 12" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M22 17L30 15" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+                        <path d="M32 12L36 14L38 15" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
                 <div class="footer__nav">
                     <a href="#fleet">Наш парк</a>
@@ -461,7 +556,7 @@
                     </a>
                 </div>
                 <div class="footer__copy">
-                    <p>&copy; 2024 MOTO ELITE. Все права защищены.</p>
+                    <p>&copy; <span id="currentYear"></span> MOTO ELITE. Все права защищены.</p>
                 </div>
             </div>
         </div>

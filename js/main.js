@@ -9,24 +9,15 @@ gsap.registerPlugin(ScrollTrigger);
 // ============================================
 // Lenis Smooth Scroll
 // ============================================
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+
 const lenis = new Lenis({
-    duration: 1.2,
+    duration: isMobile ? 0.8 : 1.1,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smooth: true,
-    smoothTouch: false,
-    touchMultiplier: 2,
+    smoothTouch: true,
+    touchMultiplier: 1.8,
 });
 
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
-
-// Sync ScrollTrigger with Lenis
 lenis.on('scroll', ScrollTrigger.update);
 
 gsap.ticker.add((time) => {
@@ -86,7 +77,7 @@ document.querySelectorAll('.menu-link').forEach(link => {
 const header = document.querySelector('.header');
 let lastScroll = 0;
 
-lenis.on('scroll', ({ scroll }) => {
+function handleScroll(scroll) {
     if (scroll > 100) {
         header.classList.add('scrolled');
     } else {
@@ -100,7 +91,9 @@ lenis.on('scroll', ({ scroll }) => {
     }
 
     lastScroll = scroll;
-});
+}
+
+lenis.on('scroll', ({ scroll }) => handleScroll(scroll));
 
 // ============================================
 // Initialize Animations
@@ -120,7 +113,7 @@ function initAnimations() {
 }
 
 // ============================================
-// Parallax Effects
+// Parallax Effects (desktop only)
 // ============================================
 function initParallax() {
     // Hero image parallax
@@ -245,7 +238,7 @@ function initTextAnimations() {
 // ============================================
 function initFadeAnimations() {
     // Fade in elements
-    document.querySelectorAll('[data-fade-in]').forEach((element, index) => {
+    document.querySelectorAll('[data-fade-in]').forEach((element) => {
         gsap.set(element, { opacity: 0, y: 30 });
 
         ScrollTrigger.create({
@@ -256,7 +249,6 @@ function initFadeAnimations() {
                     opacity: 1,
                     y: 0,
                     duration: 0.8,
-                    delay: index * 0.1,
                     ease: 'power3.out'
                 });
             },
@@ -345,83 +337,87 @@ function initFadeAnimations() {
 }
 
 // ============================================
-// Fleet Slider
+// Fleet Slider (infinite loop on desktop)
 // ============================================
 function initFleetSlider() {
     const track = document.querySelector('.fleet-slider__track');
-    const cards = document.querySelectorAll('.fleet-card');
+    const cards = Array.from(document.querySelectorAll('.fleet-card'));
     const prevBtn = document.querySelector('.slider-btn.prev');
     const nextBtn = document.querySelector('.slider-btn.next');
 
     if (!track || cards.length === 0) return;
 
+    // On mobile — native scroll, no JS slider
+    const isMobileSlider = () => window.innerWidth < 768;
+    if (isMobileSlider()) return;
+
     let currentIndex = 0;
-    const cardWidth = cards[0].offsetWidth + 32; // Including gap
-    const maxIndex = Math.max(0, cards.length - Math.floor(track.parentElement.offsetWidth / cardWidth));
+    let isAnimating = false;
 
-    function updateSlider() {
-        gsap.to(track, {
-            x: -currentIndex * cardWidth,
-            duration: 0.8,
-            ease: 'power3.out'
-        });
-
-        prevBtn.style.opacity = currentIndex === 0 ? 0.3 : 1;
-        nextBtn.style.opacity = currentIndex >= maxIndex ? 0.3 : 1;
+    function getCardWidth() {
+        const card = track.querySelector('.fleet-card');
+        const gap = parseFloat(getComputedStyle(track).gap) || 32;
+        return card.offsetWidth + gap;
     }
 
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlider();
+    function updatePosition(animate) {
+        const offset = -currentIndex * getCardWidth();
+        if (animate) {
+            track.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        } else {
+            track.style.transition = 'none';
         }
-    });
+        track.style.transform = `translateX(${offset}px)`;
+    }
 
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < maxIndex) {
-            currentIndex++;
-            updateSlider();
-        }
-    });
+    function slideNext() {
+        if (isAnimating) return;
+        isAnimating = true;
+        currentIndex++;
+        updatePosition(true);
 
-    // Touch/drag support
-    let startX = 0;
-    let isDragging = false;
-
-    track.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.clientX;
-        track.style.cursor = 'grabbing';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        const diff = e.clientX - startX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0 && currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            } else if (diff < 0 && currentIndex < maxIndex) {
-                currentIndex++;
-                updateSlider();
+        track.addEventListener('transitionend', function handler() {
+            track.removeEventListener('transitionend', handler);
+            if (currentIndex >= cards.length) {
+                currentIndex = 0;
+                updatePosition(false);
             }
-            isDragging = false;
-            track.style.cursor = 'grab';
+            isAnimating = false;
+        });
+    }
+
+    function slidePrev() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        if (currentIndex <= 0) {
+            currentIndex = cards.length;
+            updatePosition(false);
+            // Force reflow
+            track.offsetHeight;
         }
-    });
 
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-        track.style.cursor = 'grab';
-    });
+        currentIndex--;
+        updatePosition(true);
 
-    // Recalculate on resize
+        track.addEventListener('transitionend', function handler() {
+            track.removeEventListener('transitionend', handler);
+            isAnimating = false;
+        });
+    }
+
+    nextBtn.addEventListener('click', slideNext);
+    prevBtn.addEventListener('click', slidePrev);
+
+    // Reset on resize
     window.addEventListener('resize', () => {
-        const newMaxIndex = Math.max(0, cards.length - Math.floor(track.parentElement.offsetWidth / cardWidth));
-        if (currentIndex > newMaxIndex) {
-            currentIndex = newMaxIndex;
-            updateSlider();
+        if (isMobileSlider()) {
+            track.style.transform = '';
+            track.style.transition = '';
+            return;
         }
+        currentIndex = 0;
+        updatePosition(false);
     });
 }
 
@@ -616,4 +612,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
+
+    // Auto-update copyright year
+    const yearEl = document.getElementById('currentYear');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
